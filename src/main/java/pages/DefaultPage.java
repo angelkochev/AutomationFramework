@@ -1,23 +1,29 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 /** The first page which the user is landing on when the URL is hit*/
-public class DefaultPage {
+public class DefaultPage extends BasePage {
 
-    WebDriver driver;
-
-    // Constructor
     public DefaultPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     // Locators
-    By loginButton = By.id("nav-link-login");
+    @FindBy(id = "nav-link-login")
+    WebElement loginButton;
+
+    @FindBy(id = "nav-link-login")
+    WebElement signInButton;
 
     // Methods
     public void clickLoginButton(){
-        driver.findElement(loginButton).click();
+        loginButton.click();
+    }
+
+    public void clickSignInButton() {
+        signInButton.click();
     }
 }

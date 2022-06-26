@@ -3,12 +3,10 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginForm {
-
-    WebDriver driver;
+public class LoginForm extends BasePage{
 
     public LoginForm(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     // Locators
@@ -18,12 +16,12 @@ public class LoginForm {
 
     // Methods
     public void enterUsername(String username){
-        driver.findElement(usernameField).clear(); //not needed here, but is a good practice
+        driver.findElement(usernameField).clear(); //not needed here, but it is a good practice
         driver.findElement(usernameField).sendKeys(username);
     }
 
     public void enterPassword(String password){
-        driver.findElement(passwordField).clear(); //not needed here, but is a good practice
+        driver.findElement(passwordField).clear(); //not needed here, but it is a good practice
         driver.findElement(passwordField).sendKeys(password);
     }
 
