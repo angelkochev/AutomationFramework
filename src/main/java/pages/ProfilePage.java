@@ -10,17 +10,25 @@ public class ProfilePage extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = "//*[contains(@class, 'profile-user-settings')]")
+    @FindBy(xpath = "//*[contains(@class, 'profile-user-settings')]") //or xpath = "//h2[text()='nikidm-testing-user']"
     WebElement userName;
 
-    /*
-    public void verifyUserName(WebElement userName) {
-        this.userName = userName;
+    @FindBy(xpath = "//*[contains(@class, 'btn-all')]")
+    WebElement allPostsButton;
+
+    @FindBy(xpath = "//strong[@class='profile-stat-count']")
+    WebElement postsCount;
+
+    public boolean isAllPostsButtonDisplayed(){
+        return allPostsButton.isDisplayed();
     }
-    */
+
+    public boolean isUserNameDisplayed() {
+        return(userName).isDisplayed();
+    }
 
     public boolean verifyUserName() {
-        userName.getText().equals("angel131we");
-        return true;
+        return userName.getText().equals("angel131we");
     }
+
 }

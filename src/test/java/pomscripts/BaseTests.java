@@ -8,7 +8,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.*;
-
 import java.time.Duration;
 
 public class BaseTests {
@@ -35,7 +34,7 @@ public class BaseTests {
 
     @AfterTest
     public void tearDown(){
-        driver.quit();
+       driver.quit();
     }
 
     @Test(priority = 1)
@@ -66,7 +65,14 @@ public class BaseTests {
     public void getAllUserPosts() throws InterruptedException {
         driver.get("http://training.skillo-bg.com/posts/all");
         homePage.clickProfileButton();
+        Assert.assertTrue(profilePage.isUserNameDisplayed());
+        Assert.assertTrue(profilePage.isAllPostsButtonDisplayed());
         Assert.assertTrue(profilePage.verifyUserName());
         Thread.sleep(2000);
+    }
+
+    @Test(priority = 3)
+    public void commentPost(){
+
     }
 }
