@@ -8,6 +8,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.*;
+
 import java.time.Duration;
 
 public class BaseTests {
@@ -20,7 +21,7 @@ public class BaseTests {
     ProfilePage profilePage;
 
     @BeforeTest
-    public void setUp(){
+    public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -33,12 +34,12 @@ public class BaseTests {
     }
 
     @AfterTest
-    public void tearDown(){
-       driver.quit();
+    public void tearDown() {
+        driver.quit();
     }
 
     @Test(priority = 1)
-    public void loginTest(){
+    public void loginTest() {
         driver.get("http://training.skillo-bg.com/");
         defaultPage.clickLoginButton();
         loginForm.enterUsername("angel131we");
@@ -62,17 +63,26 @@ public class BaseTests {
     */
 
     @Test(priority = 2)
-    public void getAllUserPosts() throws InterruptedException {
+    public void getAllUserPosts() {
         driver.get("http://training.skillo-bg.com/posts/all");
         homePage.clickProfileButton();
         Assert.assertTrue(profilePage.isUserNameDisplayed());
         Assert.assertTrue(profilePage.isAllPostsButtonDisplayed());
         Assert.assertTrue(profilePage.verifyUserName());
-        Thread.sleep(2000);
+
     }
 
     @Test(priority = 3)
-    public void commentPost(){
+    public void getPostsCount() {
+        driver.get("http://training.skillo-bg.com/users/2798");
+        profilePage.clickAllPostsButton();
+        profilePage.getPostsCount();
+        Assert.assertTrue(profilePage.getPostsCount().contains("10"));
+    }
 
+    @Test(priority = 4)
+    public void logout() {
+        homePage.clickLogoutButton();
+        Assert.assertTrue(defaultPage.isSignInButtonDisplayed());
     }
 }

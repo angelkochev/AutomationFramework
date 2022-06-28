@@ -4,7 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-/** The first page which the user is landing on when the URL is hit*/
+/**
+ * The first page which the user is landing on when the URL is hit
+ */
 public class DefaultPage extends BasePage {
 
     public DefaultPage(WebDriver driver) {
@@ -19,11 +21,15 @@ public class DefaultPage extends BasePage {
     WebElement signInButton;
 
     // Methods
-    public void clickLoginButton(){
+    public void clickLoginButton() {
         loginButton.click();
     }
 
     public void clickSignInButton() {
         signInButton.click();
+    }
+
+    public boolean isSignInButtonDisplayed() {
+        return signInButton.isDisplayed();
     }
 }

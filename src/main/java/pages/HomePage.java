@@ -34,4 +34,8 @@ public class HomePage extends BasePage{
         profileButton.click();
     }
 
+    public void clickLogoutButton(){
+        logoutButton.click();
+    }
+
 }

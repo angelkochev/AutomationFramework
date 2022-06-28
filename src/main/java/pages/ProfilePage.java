@@ -1,5 +1,6 @@
 package pages;
 
+import org.apache.logging.log4j.core.util.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,16 +20,25 @@ public class ProfilePage extends BasePage {
     @FindBy(xpath = "//strong[@class='profile-stat-count']")
     WebElement postsCount;
 
-    public boolean isAllPostsButtonDisplayed(){
+    public boolean isAllPostsButtonDisplayed() {
         return allPostsButton.isDisplayed();
     }
 
+    public void clickAllPostsButton() {
+        allPostsButton.click();
+    }
+
     public boolean isUserNameDisplayed() {
-        return(userName).isDisplayed();
+        return userName.isDisplayed();
     }
 
     public boolean verifyUserName() {
         return userName.getText().equals("angel131we");
     }
+
+    public String getPostsCount() {
+        return (postsCount.getText());
+    }
+
 
 }
